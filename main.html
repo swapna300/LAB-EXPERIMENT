@@ -1,9 +1,147 @@
-<html>
-  <head>
-    <title>homepagew</title>
-    <link re="stylesheet" href="style.css>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Institution</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+        }
+
+        .page {
+            padding: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        form button:hover {
+            background-color: #555;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #333;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
     <header>
         <nav>
             <div class="logo">EduInst</div>
@@ -63,7 +201,45 @@
     <footer>
         <p>&copy; 2023 Educational Institution. All rights reserved.</p>
     </footer>
-    <script src="script.js"> </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navList = document.querySelector('.nav-links');
+
+            // Navigation between pages
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    pages.forEach(page => {
+                        if (page.id === targetId) {
+                            page.classList.add('active');
+                        } else {
+                            page.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            // Mobile menu toggle
+            mobileMenu.addEventListener('click', function () {
+                navList.classList.toggle('active');
+            });
+
+            // Form submission handling
+            document.getElementById('loginForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Login Successful!');
+            });
+
+            document.getElementById('registerForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Registration Successful!');
+            });
+        });
+    </script>
 </body>
 </html>"
-</html>
